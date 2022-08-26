@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SunLyhuor_AssDataSet" targetNamespace="http://tempuri.org/SunLyhuor_AssDataSet.xsd" xmlns:mstns="http://tempuri.org/SunLyhuor_AssDataSet.xsd" xmlns="http://tempuri.org/SunLyhuor_AssDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SunLyhuor_AssConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SunLyhuor_AssConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp1.Properties.Settings.GlobalReference.Default.SunLyhuor_AssConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GuestTableAdapter" GeneratorDataComponentClassName="GuestTableAdapter" Name="Guest" UserDataComponentName="GuestTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SunLyhuor_AssConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * from Guest g INNER JOIN Provinces p ON g.ProId = p.ProId order by g.gId DESC;
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="gId" DataSetColumn="gId" />
+              <Mapping SourceColumn="gName" DataSetColumn="gName" />
+              <Mapping SourceColumn="gAmount" DataSetColumn="gAmount" />
+              <Mapping SourceColumn="ProId" DataSetColumn="ProId" />
+              <Mapping SourceColumn="ProId1" DataSetColumn="ProId1" />
+              <Mapping SourceColumn="ProName" DataSetColumn="ProName" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="SunLyhuor_AssConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT g.gId, g.gName, g.gAmount, p.ProName
+FROM     Guest AS g INNER JOIN
+                  Provinces AS p ON g.ProId = p.ProId</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProvincesTableAdapter" GeneratorDataComponentClassName="ProvincesTableAdapter" Name="Provinces" UserDataComponentName="ProvincesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SunLyhuor_AssConnectionString (Settings)" DbObjectName="SunLyhuor_Ass.dbo.Provinces" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Provinces] WHERE (([ProId] = @Original_ProId) AND ((@IsNull_ProName = 1 AND [ProName] IS NULL) OR ([ProName] = @Original_ProName)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ProId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ProId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ProName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ProName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ProName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ProName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Provinces] ([ProName]) VALUES (@ProName);
+SELECT ProId, ProName FROM Provinces WHERE (ProId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ProName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ProName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ProId, ProName FROM dbo.Provinces</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Provinces] SET [ProName] = @ProName WHERE (([ProId] = @Original_ProId) AND ((@IsNull_ProName = 1 AND [ProName] IS NULL) OR ([ProName] = @Original_ProName)));
+SELECT ProId, ProName FROM Provinces WHERE (ProId = @ProId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ProName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ProName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ProId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ProId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ProName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ProName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ProName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ProName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ProId" ColumnName="ProId" DataSourceName="SunLyhuor_Ass.dbo.Provinces" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ProId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ProId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ProId" DataSetColumn="ProId" />
+              <Mapping SourceColumn="ProName" DataSetColumn="ProName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SunLyhuor_AssDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SunLyhuor_AssDataSet" msprop:Generator_UserDSName="SunLyhuor_AssDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Guest" msprop:Generator_TableClassName="GuestDataTable" msprop:Generator_TableVarName="tableGuest" msprop:Generator_TablePropName="Guest" msprop:Generator_RowDeletingName="GuestRowDeleting" msprop:Generator_RowChangingName="GuestRowChanging" msprop:Generator_RowEvHandlerName="GuestRowChangeEventHandler" msprop:Generator_RowDeletedName="GuestRowDeleted" msprop:Generator_UserTableName="Guest" msprop:Generator_RowChangedName="GuestRowChanged" msprop:Generator_RowEvArgName="GuestRowChangeEvent" msprop:Generator_RowClassName="GuestRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="gId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columngId" msprop:Generator_ColumnPropNameInRow="gId" msprop:Generator_ColumnPropNameInTable="gIdColumn" msprop:Generator_UserColumnName="gId" type="xs:int" />
+              <xs:element name="gName" msprop:Generator_ColumnVarNameInTable="columngName" msprop:Generator_ColumnPropNameInRow="gName" msprop:Generator_ColumnPropNameInTable="gNameColumn" msprop:Generator_UserColumnName="gName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="gAmount" msprop:Generator_ColumnVarNameInTable="columngAmount" msprop:Generator_ColumnPropNameInRow="gAmount" msprop:Generator_ColumnPropNameInTable="gAmountColumn" msprop:Generator_UserColumnName="gAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ProId" msprop:Generator_ColumnVarNameInTable="columnProId" msprop:Generator_ColumnPropNameInRow="ProId" msprop:Generator_ColumnPropNameInTable="ProIdColumn" msprop:Generator_UserColumnName="ProId" type="xs:int" minOccurs="0" />
+              <xs:element name="ProId1" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProId1" msprop:Generator_ColumnPropNameInRow="ProId1" msprop:Generator_ColumnPropNameInTable="ProId1Column" msprop:Generator_UserColumnName="ProId1" type="xs:int" />
+              <xs:element name="ProName" msprop:Generator_ColumnVarNameInTable="columnProName" msprop:Generator_ColumnPropNameInRow="ProName" msprop:Generator_ColumnPropNameInTable="ProNameColumn" msprop:Generator_UserColumnName="ProName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Provinces" msprop:Generator_TableClassName="ProvincesDataTable" msprop:Generator_TableVarName="tableProvinces" msprop:Generator_TablePropName="Provinces" msprop:Generator_RowDeletingName="ProvincesRowDeleting" msprop:Generator_RowChangingName="ProvincesRowChanging" msprop:Generator_RowEvHandlerName="ProvincesRowChangeEventHandler" msprop:Generator_RowDeletedName="ProvincesRowDeleted" msprop:Generator_UserTableName="Provinces" msprop:Generator_RowChangedName="ProvincesRowChanged" msprop:Generator_RowEvArgName="ProvincesRowChangeEvent" msprop:Generator_RowClassName="ProvincesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProId" msprop:Generator_ColumnPropNameInRow="ProId" msprop:Generator_ColumnPropNameInTable="ProIdColumn" msprop:Generator_UserColumnName="ProId" type="xs:int" />
+              <xs:element name="ProName" msprop:Generator_ColumnVarNameInTable="columnProName" msprop:Generator_ColumnPropNameInRow="ProName" msprop:Generator_ColumnPropNameInTable="ProNameColumn" msprop:Generator_UserColumnName="ProName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Guest" />
+      <xs:field xpath="mstns:gId" />
+    </xs:unique>
+    <xs:unique name="Provinces_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Provinces" />
+      <xs:field xpath="mstns:ProId" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="gFK" msdata:parent="Provinces" msdata:child="Guest" msdata:parentkey="ProId" msdata:childkey="ProId" msprop:Generator_UserChildTable="Guest" msprop:Generator_ChildPropName="GetGuestRows" msprop:Generator_UserRelationName="gFK" msprop:Generator_RelationVarName="relationgFK" msprop:Generator_UserParentTable="Provinces" msprop:Generator_ParentPropName="ProvincesRow" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>
